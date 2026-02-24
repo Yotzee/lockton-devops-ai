@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, LogOut } from "lucide-react";
+import { Home, LogOut, MessageSquare } from "lucide-react";
 import { useAuth } from "@/resources/auth";
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +25,19 @@ export function LeftNav() {
         >
           <Home className="h-4 w-4" />
           Home
+        </NavLink>
+        <NavLink
+          to="/chat"
+          className={({ isActive }) =>
+            `flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors ${
+              isActive
+                ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
+                : "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+            }`
+          }
+        >
+          <MessageSquare className="h-4 w-4" />
+          AI Chat
         </NavLink>
       </nav>
 

@@ -30,7 +30,8 @@ app/
         │   └── LeftNav/  # Sidebar navigation
         ├── pages/        # Route-level page components
         │   ├── LoginPage/
-        │   └── HomePage/
+        │   ├── HomePage/
+        │   └── ChatPage/  # AI Chat interface (mocked UI, bottom-up chat view)
         ├── resources/    # Shared state, context providers, data fetching
         │   └── auth.tsx  # AuthProvider + useAuth hook (static credentials)
         ├── lib/          # Utility functions (cn helper)
@@ -53,7 +54,7 @@ app/
 
 **Pattern**: Pages / Components / Resources
 
-- **Pages** — Route-level components (LoginPage, HomePage), each in its own folder with `.tsx`, `.test.tsx`, `.stories.tsx`
+- **Pages** — Route-level components (LoginPage, HomePage, ChatPage), each in its own folder with `.tsx`, `.test.tsx`, `.stories.tsx`
 - **Components** — Reusable UI (Layout, LeftNav, shadcn primitives), each with tests and stories
 - **Resources** — Shared state and context (AuthProvider with static credentials: admin/admin, user/user)
 - **Routing** — react-router-dom v7; Layout component wraps authenticated routes, redirects to /login when unauthenticated
@@ -114,6 +115,7 @@ cd app/frontend && npm run build-storybook # Build static storybook
 |--------|-----------|---------------|
 | /login | LoginPage | No            |
 | /      | HomePage  | Yes           |
+| /chat  | ChatPage  | Yes           |
 
 ## Key Dependencies
 
