@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, type FormEvent } from "react";
 import { useAuth } from "@/resources/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ChatBubble } from "@/components/ChatBubble/ChatBubble";
 import { SendHorizontal } from "lucide-react";
 
 export interface ChatMessage {
@@ -69,23 +70,12 @@ export function ChatPage() {
         )}
         <div className="space-y-4">
           {messages.map((msg) => (
-            <div
+            <ChatBubble
               key={msg.id}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <div
-                className={`max-w-[75%] rounded-lg px-4 py-2 text-sm ${
-                  msg.role === "user"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-foreground"
-                }`}
-              >
-                <div className="mb-1 text-xs font-medium opacity-70">
-                  {msg.role === "user" ? user?.username : "Agent"}
-                </div>
-                {msg.content}
-              </div>
-            </div>
+              role={msg.role}
+              sender={msg.role === "user" ? user?.username ?? "User" : "Agent"}
+              content={msg.content}
+            />
           ))}
           <div ref={bottomRef} />
         </div>
